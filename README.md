@@ -1,4 +1,4 @@
-# InClass 3 - Classes, Abstract, Interfaces, Polymorhism
+# InClass 3 - Classes, Abstract, Interfaces, Polymorphism
 
 ## Author
 
