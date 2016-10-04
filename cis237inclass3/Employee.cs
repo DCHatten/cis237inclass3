@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace cis237inclass3
 {
-    class Employee
+    //This is an abstract class.  It cannot be instanciated, but it provides some methods/constructors for child classes
+    abstract class Employee : IEmployee
     {
         //Backing fields
         protected string _firstName;
@@ -33,10 +34,19 @@ namespace cis237inclass3
         {
             return _firstName + " " + _lastName;
         }
-        public DayOfWeek GetStartDay()
+        public int GetEmploymentDurationinYears()
         {
-            return _startDate.DayOfWeek;
+            //Subtract the ticks of the start date from today, then get the days and divide by 365
+            return new TimeSpan(DateTime.Now.Ticks - this._startDate.Ticks).Days / 365;
         }
+        public virtual string GetAllEmployeeInformation()
+        {
+            //Compile and concatenate all the properties of the employee into a single line for readability
+            return this._firstName + " " + this._lastName + " " + this.GetEmploymentDurationinYears() + " year(s)";
+        }
+        //Get the yearly salary of the employee
+        //Make the method abstract so that all children will need to implement the method
+        public abstract decimal GetYearlySalary();
         //Constructors
         public Employee(string FirstName, string LastName, DateTime StartDate)
         {

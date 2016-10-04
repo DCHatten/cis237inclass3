@@ -21,6 +21,20 @@ namespace cis237inclass3
         {
             return base.ToString() + " " + _weeklySalary.ToString("C");
         }
+        public override string ToString()
+        {
+            //Take the parents To String ouput and add the weekly salary
+            return base.ToString() + " " + this._weeklySalary.ToString("C");
+        }
+        public override string GetAllEmployeeInformation()
+        {
+            return base.GetAllEmployeeInformation() + " " + this.GetYearlySalary().ToString("C");
+        }
+        public override decimal GetYearlySalary()
+        {
+            //Override the abstract method in the parent class, which MUST be implemented
+            return this._weeklySalary * 52;
+        }
         //Constructor
         public SalaryEmployee(string FirstName, string LastName, DateTime StartDate, 
             decimal WeeklySalary) : base(FirstName,LastName,StartDate)
